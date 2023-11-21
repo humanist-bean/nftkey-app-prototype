@@ -1,0 +1,54 @@
+<h2 class="page-header" >Login</h2>
+<form class="form-signin" (submit)="onLoginSubmit()">
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="username" name="username">
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" placeholder=" Enter Password" [(ngModel)]="password" name="password">
+        </div>
+        <!-- ALDERS NOTE: This is alders code below, I am trying to add a login message instead
+          of showing a flash message since the flash message package is outdated 
+        CODE PLAN: make it so a modal pops up with "Error password incorrect" or 
+        "Error Username Not Found" after a user submits there username and password instead of a flash message.
+        You can use the modal thats built in to bootstrap and *ngIf directives to make it show at the right time-->
+        <!--
+        <div *ngIf="goodLog || badLog" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Login Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div *ngIf="badLog" class="modal-body">
+                <p>Username or password was incorrect, please try again.</p>
+              </div>
+              <div *ngIf="goodLog" class="modal-body">
+                <p>Success! Logging in...</p>
+              </div>
+              <div class="modal-footer">
+                <button (click)="resetLogStuff()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
+        <div *ngIf="badLog" class="form-group">
+          <label>Username or password was incorrect, please try again.</label>
+        </div>
+
+        <div *ngIf="goodLog" class="form-group">
+          <label>Success! Logging in...</label>
+        </div>
+
+          <!-- End Alders Code-->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <input class="btn btn-lg btn-primary" type="submit" value="Login">
+</form>
